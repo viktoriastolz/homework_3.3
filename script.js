@@ -1,19 +1,19 @@
-// "use strict";
-
-// const number = prompt("Enter a five-digit number:");
-
-// console.log(number.split('').join(' '));
 "use strict";
 
-function processFiveDigitNumber() {
-    const number = prompt("Enter a five-digit number:");
+let number;
 
-    if (!number || number.length !== 5 || !/^\d{5}$/.test(number)) {
-        alert("Invalid input! Please enter a valid five-digit number.");
-        return;
+while (true) {
+    number = prompt("Enter a five-digit number:");
+
+    if (number === null) {
+        alert("Ok, bye");
+        break;
     }
-    const formattedNumber = number.split('').join(' ');
-    alert(`Formatted number: ${formattedNumber}`);
-}
 
-processFiveDigitNumber();
+    if (number.length === 5 && /^\d{5}$/.test(number)) {
+        alert(`Formatted number: ${number.split('').join(' ')}`);
+        break; 
+    } else {
+        alert("Invalid input! Please enter a valid five-digit number.");
+    }
+}
