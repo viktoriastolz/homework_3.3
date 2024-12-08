@@ -1,19 +1,18 @@
 "use strict";
 
-let number;
+const fiveDigitNumberInput = prompt("Enter a five-digit number:");
 
-while (true) {
-    number = prompt("Enter a five-digit number:");
-
-    if (number === null) {
-        alert("Ok, bye");
-        break;
-    }
-
-    if (number.length === 5 && /^\d{5}$/.test(number)) {
-        alert(`Formatted number: ${number.split('').join(' ')}`);
-        break; 
+if (fiveDigitNumberInput === null) {
+    alert("Ok, bye");
+} else {
+    if (fiveDigitNumberInput.trim() === "" || isNaN(fiveDigitNumberInput) || fiveDigitNumberInput.length !== 5) {
+        alert("Error: invalid number");
     } else {
-        alert("Invalid input! Please enter a valid five-digit number.");
+        const num = Math.abs(+fiveDigitNumberInput); 
+        if (String(num).length === 5) {
+            alert(`Valid five-digit number: ${num}`);
+        } else {
+            alert("Number is not a five-digit number");
+        }
     }
 }
