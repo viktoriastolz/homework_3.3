@@ -1,14 +1,21 @@
 "use strict";
 
-const fiveDigitNumberInput = prompt("Enter a five-digit number:");
+const fiveDigitNumberInput = prompt("Enter a five-digit number");
 
 if (fiveDigitNumberInput === null) {
-    alert("Ok, bye");
+  alert("Okay, bye");
+} else if (
+  !fiveDigitNumberInput?.trim() || 
+  isNaN(fiveDigitNumberInput) || 
+  !Number.isInteger(+fiveDigitNumberInput)
+) {
+  alert("Error: invalid number");
 } else {
-    if (fiveDigitNumberInput.trim() === "" || fiveDigitNumberInput.length !== 5 || !/^\d{5}$/.test(fiveDigitNumberInput) || fiveDigitNumberInput === "00000") {
-        alert("Error: Invalid number");
-    } else {
-        const digits = fiveDigitNumberInput.split('').join(' ');
-        alert(`The number split into digits: ${digits}`);
-    }
+  const num = Math.abs(+fiveDigitNumberInput);
+  if (String(num).length === 5 && fiveDigitNumberInput.trim() === String(num)) {
+    const digits = String(num).split("").join(" ");
+    alert(digits);
+  } else {
+    alert("Error: Number is not five-digit or has leading zeros");
+  }
 }
